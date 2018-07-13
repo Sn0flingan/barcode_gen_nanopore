@@ -4,6 +4,11 @@ Barcode generator tailored for nanopore sequencing.
 Features:
 - No homopolymers
 - Distance threshold in [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance)
+- Custom barcode length
+- Custom number of barcodes
+
+Known issues:
+- Large number of barcodes with high distance threshold can lead to very long computional times, even infinity at times.
 
 ## Getting Started
 ### Installation of prerequisites
