@@ -13,7 +13,7 @@ def main():
     barcodes =[]
     for i in range(args.numOfBc):
         barcode = generate_barcode(args.length, [])
-        barcodes.append(barcode)
+        barcodes.append(''.join(barcode))
     print(barcodes)
     return
 
