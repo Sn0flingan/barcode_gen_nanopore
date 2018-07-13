@@ -21,6 +21,7 @@ def main():
             barcode = generate_barcode(args.length, "")
         barcodes.append(barcode)
     print(barcodes)
+    write_2_file(barcodes, args.output)
     return
 
 def get_arguments():
@@ -45,5 +46,11 @@ def generate_barcode(bc_len, bc):
             next_base = choice("atgc")
     bc += next_base
     return generate_barcode(bc_len-1, bc)
+
+def write_2_file(barcodes, file):
+    filehandle = open(file, 'w')
+    formated_barcodes = ['bc{}\t{}\n'.format(idx, barcode) for idx, barcode in enumerate(barcodes)]
+    filehandle.writelines(formated_barcodes)
+    filehandle.close()
 
 main()
