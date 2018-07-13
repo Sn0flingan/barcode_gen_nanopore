@@ -6,9 +6,13 @@
 #
 
 import argparse
+import random
 
 def main():
     args = get_arguments()
+    barcode = generate_barcode(args.length, [])
+    print(barcode)
+    return
 
 def get_arguments():
     parser = argparse.ArgumentParser()
@@ -20,5 +24,11 @@ def get_arguments():
                         default="barcodes.txt")
     args = parser.parse_args()
     return args
+
+def generate_barcode(bc_len, bc):
+    if bc_len == 0:
+        return bc
+    bc.append(random.choice("atgc"))
+    return generate_barcode(bc_len-1, bc)
 
 main()
