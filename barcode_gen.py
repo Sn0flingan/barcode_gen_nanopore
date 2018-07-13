@@ -31,7 +31,11 @@ def get_arguments():
 def generate_barcode(bc_len, bc):
     if bc_len == 0:
         return bc
-    bc.append(random.choice("atgc"))
+    next_base = random.choice("atgc")
+    if not len(bc) == 0:
+        while next_base == bc[-1]:
+            next_base = random.choice("atgc")
+    bc.append(next_base)
     return generate_barcode(bc_len-1, bc)
 
 main()
