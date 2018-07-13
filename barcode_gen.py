@@ -10,15 +10,18 @@ import random
 
 def main():
     args = get_arguments()
-    barcode = generate_barcode(args.length, [])
-    print(barcode)
+    barcodes =[]
+    for i in range(args.numOfBc):
+        barcode = generate_barcode(args.length, [])
+        barcodes.append(barcode)
+    print(barcodes)
     return
 
 def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--length", help="length of barcodes",
                         default=12, type=int)
-    parser.add_argument("-n", help="number of barcodes to generate",
+    parser.add_argument("-n", "--numOfBc", help="number of barcodes to generate",
                         default=2, type=int)
     parser.add_argument("-o", "--output", help="name of output file",
                         default="barcodes.txt")
