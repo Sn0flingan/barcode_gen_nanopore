@@ -22,7 +22,6 @@ def main():
                 c = Counter("    Barcode candidate no: ")
             while min(distance(barcode,previous_bc) for previous_bc in barcodes)<=args.distance:
                 barcode = generate_barcode(args.length, "")
-                try_count += 1
                 if args.verbosity >=2:
                     c.next()
             if args.verbosity >=2:
