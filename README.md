@@ -8,17 +8,23 @@ Barcode generator tailored for nanopore sequencing.
 - Custom number of barcodes
 
 **Known issues:**
-- Large number of barcodes with high distance threshold can lead to very long computional times, even infinity at times.
+- When the distance threshold is approximatly half of the barcode length or longer, generating more than 10 barcodes will be costly.
 
 ## Getting Started
 ### Installation of prerequisites
 
 - Python3
 - Levenshtein package for python (pip for install)
+- Progress package - used for verbose output 
 
 Installing Levenshtein-package:
 ```
 pip install python-levenshtein
+```
+
+Installing progress package:
+```
+pip install progress
 ```
 
 ## Running the script
