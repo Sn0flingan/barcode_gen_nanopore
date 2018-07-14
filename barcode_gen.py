@@ -17,8 +17,12 @@ def main():
     for i in range(args.numOfBc):
         barcode = generate_barcode(args.length, "")
         if not len(barcodes) == 0:
+            try_count = 0
             while min(distance(barcode,previous_bc) for previous_bc in barcodes)<=args.distance:
                 barcode = generate_barcode(args.length, "")
+                try_count += 1
+                if args.verbosity >=1 and try_count%10000==0:
+                    print("    Barcode candidate no: {}".format(try_count))
         barcodes.append(barcode)
         if args.verbosity >= 1:
             print('Barcode {}: {}'.format(i+1, barcode))
