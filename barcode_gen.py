@@ -20,7 +20,7 @@ def main():
         if not len(barcodes) == 0:
             if args.verbosity >=2:
                 c = Counter("    Barcode candidate no: ")
-            while min(distance(barcode,previous_bc) for previous_bc in barcodes)<=args.distance:
+            while (not 0.2<=gc_content(barcode)<=0.8) or min(distance(barcode,previous_bc) for previous_bc in barcodes)<=args.distance:
                 barcode = generate_barcode(args.length, "")
                 if args.verbosity >=2:
                     c.next()
@@ -30,6 +30,7 @@ def main():
         barcodes.append(barcode)
         if args.verbosity >= 1:
             print('Barcode {}: {}'.format(i+1, barcode))
+            print(gc_content(barcode))
     write_2_file(barcodes, args.output, args.verbosity)
     return
 
@@ -73,5 +74,12 @@ def write_2_file(barcodes, file, verbosity):
     if verbosity >= 1:
         print("\n--- Saved results ---")
         print("Saved barcodes to: {}".format(file))
+
+def gc_content(seq):
+    gc_count = 0.0
+    for base in seq:
+        if base=='g' or base=='c':
+            gc_count +=1
+    return gc_count/float(len(seq))
 
 main()
