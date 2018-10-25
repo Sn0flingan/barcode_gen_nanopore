@@ -3,12 +3,16 @@ Barcode generator tailored for nanopore sequencing.
 
 **Features:**
 - No homopolymers
+- GC-content between 40-60% (can be changed manually in the code)
 - Distance threshold in [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance)
 - Custom barcode length
 - Custom number of barcodes
 
+**Work in progress**
+- Custom GC-content setting
+
 **Known issues:**
-- When the distance threshold is approximatly half of the barcode length or longer, generating more than 10 barcodes will be costly.
+- When the distance threshold is approximatly half of the barcode length or longer, generating more than 10 barcodes will be costly, in some cases impossible.
 
 ## Getting Started
 ### Installation of prerequisites
@@ -19,12 +23,12 @@ Barcode generator tailored for nanopore sequencing.
 
 Installing Levenshtein-package:
 ```
-pip install python-levenshtein
+pip3 install python-levenshtein
 ```
 
 Installing progress package:
 ```
-pip install progress
+pip3 install progress
 ```
 
 ## Running the script
